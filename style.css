@@ -2,6 +2,7 @@
     --cor-fundo: #ffffff;   /* Fundo do header (branco) */
     --cor-principal: #06f; /* Cor do logo (azul) */
     --fonte-principal: Brockmann, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
+    --cor-secundaria: #6b7280;
 }
 
 * {
@@ -49,7 +50,7 @@ header {
 }
 
 .nav-links a {
-    color: #6b7280;
+    color: var(--cor-secundaria);
     text-decoration: none; /* Remove o sublinhado padrão */
     border-bottom-width: 3px;   /* Espessura da linha */
     border-bottom-style: solid; /* Tipo de linha */
@@ -222,4 +223,37 @@ body {
     /* Simplesmente invertemos as cores do estado normal */
     background-color: var(--cor-principal); /* Fundo fica azul */
     color: #ffffff; /* Texto fica branco */
+}
+
+.container-stats {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 40px 0;
+    gap: 15rem;
+}
+
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    -webkit-text-fill-color: #0000;
+    background: linear-gradient(135deg, var(--cor-principal), #00d9ff);
+    background: linear-gradient(135deg, var(--cor-principal), #00d9ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    color: var(--cor-secundaria);
+    font-size: .875rem;
+    margin-top: .5rem;
 }
