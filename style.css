@@ -1,0 +1,225 @@
+:root {
+    --cor-fundo: #ffffff;   /* Fundo do header (branco) */
+    --cor-principal: #06f; /* Cor do logo (azul) */
+    --fonte-principal: Brockmann, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
+}
+
+* {
+    font-family: var(--fonte-principal);
+}
+
+html {
+    scroll-behavior: smooth; /* Rolagem suave para âncoras */
+}
+
+header {
+    background-color: var(--cor-fundo);
+    position: fixed; 
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 12px 0;
+}
+
+.container-principal {  
+    width: 80%;
+    max-width: 1200px; /* Limita a largura em ecrãs grandes */
+    margin: 0 auto; /* Centra a barra de navegação */
+}
+/* BARRA DE NAVEGAÇÃO */
+
+.navbar {
+    display: flex; /* Alinha o logo e os links lado a lado */
+    justify-content: space-between; /* Espaço entre o logo e os links */
+    align-items: center; /* Centra verticalmente */
+    padding: 0.5rem 0; /* Espaçamento superior e inferior */
+}
+
+.nav-links {
+    flex-grow: 1;   /* Faz os links ocuparem o espaço restante */
+    list-style: none;   /* Remove os marcadores da lista */
+    display: flex;  /* Alinha os links horizontalmente */
+    gap: 1rem;  /* Espaçamento entre os links */
+    text-align: center; /* Centraliza o texto dos links */
+    justify-content: center; /* Centraliza os links na barra de navegação */
+    padding: 0; /* Remove o padding padrão */
+    margin: 0; /* Remove a margem padrão */
+    font-weight: bold;
+}
+
+.nav-links a {
+    color: #6b7280;
+    text-decoration: none; /* Remove o sublinhado padrão */
+    border-bottom-width: 3px;   /* Espessura da linha */
+    border-bottom-style: solid; /* Tipo de linha */
+    border-bottom-color: transparent; /* Cor inicial (invisível) */
+    font-size: 0.9rem; /* Tamanho da fonte */
+    margin: 0 1.5rem; /* Espaçamento horizontal entre os links */
+    padding-bottom: 10px; /* Espaço entre o texto e a linha */
+    border-bottom: 3px solid transparent; /* Linha inferior inicial invisível */
+    transition: all 0.3s ease; /* Transição suave */
+}
+
+.nav-links a.link-ativo {
+    color: var(--cor-principal); /* Ex: muda a cor do texto quando ativo */
+    border-bottom-color: var(--cor-principal); /* Cor da linha quando ativo */
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    /* Não usar o sublinhado padrão no hover; usar apenas mudança de cor/linha inferior */
+    text-decoration: none;
+    text-underline-offset: inherit;
+    color: var(--cor-principal); /* Ex: fica azul ao passar o rato */
+}
+
+
+/* Garantir que os links da navegação não exibam sublinhado em nenhum estado
+(link, visited, hover, focus). Mantemos um indicador de foco acessível para
+usuários de teclado. */
+.nav-links a,
+.nav-links a:visited,
+.nav-links a:hover,
+.nav-links a:focus {
+    text-decoration: none;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--cor-principal);
+    text-decoration: none;
+    color: var(--cor-principal);
+}
+
+/* Usar uma variável CSS para o espaçamento superior do body. Ela é atualizada
+   via JavaScript com a altura atual do header (útil quando a navbar quebra em
+   múltiplas linhas em ecrãs pequenos). Há um fallback de 70px caso o JS não
+   esteja disponível. */
+body {
+    padding-top: var(--header-height, 70px); /* Ajuste conforme a altura do header */
+}
+
+/* Hero Section */
+.hero-badge {
+    /* fundo */
+    background-image: linear-gradient(to right, var(--cor-principal), #00d4ff); /* Gradiente azul */
+    border-radius: 999px; /* Bordas arredondadas */
+    display: inline-block; /* Ajusta o tamanho ao conteúdo */
+    /* texto */
+    color: white;
+    /* espaçamento */   
+    padding: 10px 20px;
+}
+
+/* ESTILIZAÇÃO DAS SEÇÕES */
+
+.seccao {
+    padding: 60px 20px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.container-de-seccoes .seccao:nth-child(odd){
+    background-color: #ffffff; /* Cor A (ex: branco) */
+    color: #333; /* Texto escuro para fundo claro */
+}   
+
+.container-de-seccoes .seccao:nth-child(even){
+    background-color: #f7f7f7; /* Cor B (ex: cinza claro) */
+    color: #333; /* Texto escuro */
+}
+
+.title {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: black;
+}
+
+.nome-gradiente {
+    background: linear-gradient(to right, var(--cor-principal), #00d4ff);
+    background-clip: text;
+    color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.desc-hero {
+    font-size: 1.3rem;
+    color: #727272;
+    margin-top: 24px;
+    max-width: 80ch;
+    line-height: 1.6;
+}
+
+
+.botao {
+    /* Layout e Espaçamento */
+    display: inline-block; /* Permite que o link tenha padding */
+    padding: 14px 28px; /* Espaçamento interno */
+    margin: 5px; /* Espaço entre os botões */
+
+/* Texto */
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    
+    /* Aparência */
+    border-radius: 12px; /* Deixa os cantos bem arredondados */
+    cursor: pointer;
+    
+    /* --- A ANIMAÇÃO (AQUI ESTÁ A CHAVE) --- */
+    /*
+     * 'transition' diz ao navegador para animar suavemente
+     * qualquer mudança. 'all' (todas as propriedades) em '0.3s'.
+     * Isto vai animar a cor, a sombra E o "salto".
+    */
+    transition: all 0.3s ease;
+}
+
+.botao-primario {
+    background-color: var(--cor-principal);
+    color: white;
+    border: 2px solid var(--cor-principal);
+}
+
+.botao-secundario {
+    background-color: white;
+    color: var(--cor-principal);
+    border: 2px solid var(--cor-principal);
+}
+
+/* ########################################## */
+/* --- 4. AS ANIMAÇÕES DE HOVER (AO PASSAR O MOUSE) --- */
+/* ########################################## */
+
+
+/* --- A. O "SALTO" (Comum a AMBOS os botões) --- */
+.botao:hover {
+    /*
+     * 'transform' move o elemento.
+     * 'translateY(-4px)' move-o 4 píxeis PARA CIMA.
+    */
+    transform: translateY(-4px);
+}
+
+
+/* --- B. O HOVER do Botão Primário (Sombra) --- */
+.botao-primario:hover {
+    /*
+     * Cria uma sombra suave.
+     * (0px = horizontal, 5px = vertical, 15px = blur/desfoque)
+    */
+    box-shadow: 0 5px 15px rgba(0, 86, 179, 0.4); /* Sombra azul */
+}
+
+
+/* --- C. O HOVER do Botão Secundário (Inversão) --- */
+.botao-secundario:hover {
+    /* Simplesmente invertemos as cores do estado normal */
+    background-color: var(--cor-principal); /* Fundo fica azul */
+    color: #ffffff; /* Texto fica branco */
+}
