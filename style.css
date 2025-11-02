@@ -75,10 +75,6 @@ header {
     color: var(--cor-principal); /* Ex: fica azul ao passar o rato */
 }
 
-
-/* Garantir que os links da navegação não exibam sublinhado em nenhum estado
-(link, visited, hover, focus). Mantemos um indicador de foco acessível para
-usuários de teclado. */
 .nav-links a,
 .nav-links a:visited,
 .nav-links a:hover,
@@ -94,10 +90,6 @@ usuários de teclado. */
     color: var(--cor-principal);
 }
 
-/* Usar uma variável CSS para o espaçamento superior do body. Ela é atualizada
-   via JavaScript com a altura atual do header (útil quando a navbar quebra em
-   múltiplas linhas em ecrãs pequenos). Há um fallback de 70px caso o JS não
-   esteja disponível. */
 body {
     padding-top: var(--header-height, 70px); /* Ajuste conforme a altura do header */
 }
@@ -155,7 +147,6 @@ body {
     line-height: 1.6;
 }
 
-
 .botao {
     /* Layout e Espaçamento */
     display: inline-block; /* Permite que o link tenha padding */
@@ -171,13 +162,6 @@ body {
     /* Aparência */
     border-radius: 12px; /* Deixa os cantos bem arredondados */
     cursor: pointer;
-    
-    /* --- A ANIMAÇÃO (AQUI ESTÁ A CHAVE) --- */
-    /*
-     * 'transition' diz ao navegador para animar suavemente
-     * qualquer mudança. 'all' (todas as propriedades) em '0.3s'.
-     * Isto vai animar a cor, a sombra E o "salto".
-    */
     transition: all 0.3s ease;
 }
 
@@ -193,12 +177,6 @@ body {
     border: 2px solid var(--cor-principal);
 }
 
-/* ########################################## */
-/* --- 4. AS ANIMAÇÕES DE HOVER (AO PASSAR O MOUSE) --- */
-/* ########################################## */
-
-
-/* --- A. O "SALTO" (Comum a AMBOS os botões) --- */
 .botao:hover {
     /*
      * 'transform' move o elemento.
@@ -206,7 +184,6 @@ body {
     */
     transform: translateY(-4px);
 }
-
 
 /* --- B. O HOVER do Botão Primário (Sombra) --- */
 .botao-primario:hover {
@@ -216,7 +193,6 @@ body {
     */
     box-shadow: 0 5px 15px rgba(0, 86, 179, 0.4); /* Sombra azul */
 }
-
 
 /* --- C. O HOVER do Botão Secundário (Inversão) --- */
 .botao-secundario:hover {
@@ -234,7 +210,6 @@ body {
     padding: 40px 0;
     gap: 15rem;
 }
-
 
 .stat-item {
     text-align: center;
@@ -256,4 +231,79 @@ body {
     color: var(--cor-secundaria);
     font-size: .875rem;
     margin-top: .5rem;
+}
+
+.titulo-seccao {
+    font-size: 3rem;
+    margin-bottom: 4rem;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+}
+
+
+.container-colunas-sobre {
+    display: flex;
+    flex-direction: row; /* Lado a lado (padrão) */
+    justify-content: space-between; 
+    gap: 3rem; /* ex: 48px */
+}
+
+.coluna-texto-sobre {
+    flex-basis: 47%;
+}
+
+.coluna-skills-sobre {
+    flex-basis: 40%;
+}
+
+.coluna-texto-sobre p {
+    font-size: 1.1rem;
+    color: #6b7280; /* Cinza escuro */
+    line-height: 1.7; /* Bom espaçamento entre linhas */
+    margin-bottom: 1.5rem; /* Espaço entre parágrafos */
+}
+
+.coluna-skills-sobre h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.container-habilidades-sobre {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem; 
+}
+
+.badge-habilidade {
+    background-color: #ffffff; /* Fundo cinza bem claro */
+    padding: 10px 15px; /* Espaçamento interno */
+    border-radius: 12px; /* Cantos arredondados */
+    font-size: .875rem;
+    font-weight: 600;
+    color: #333;
+    border: 1px solid #eee; /* Borda subtil */
+    display: inline-block;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
+    transition: all 1s ease;
+}
+
+.badge-habilidade:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 5px 15px rgba(0, 86, 179, 0.15);
+    border-color: var(--cor-principal);
+    color: var(--cor-principal);
+
+}
+
+@media (max-width: 768px) {
+    .sobre-container-colunas {
+        flex-direction: column; /* Mude o eixo para vertical */
+    }
+    
+    /* (Opcional) Faz as colunas ocuparem 100% da largura */
+    .sobre-coluna-texto,
+    .sobre-coluna-habilidades {
+        flex-basis: 100%;
+    }
 }
