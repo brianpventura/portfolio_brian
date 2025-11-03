@@ -1,6 +1,8 @@
 :root {
-    --cor-fundo: #ffffff;   /* Fundo do header (branco) */
-    --cor-principal: #06f; /* Cor do logo (azul) */
+    --cor-fundo: #ffffff;
+    /* Fundo do header (branco) */
+    --cor-principal: #06f;
+    /* Cor do logo (azul) */
     --fonte-principal: Brockmann, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
     --cor-secundaria: #6b7280;
 }
@@ -10,12 +12,13 @@
 }
 
 html {
-    scroll-behavior: smooth; /* Rolagem suave para âncoras */
+    scroll-behavior: smooth;
+    /* Rolagem suave para âncoras */
 }
 
 header {
     background-color: var(--cor-fundo);
-    position: fixed; 
+    position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
@@ -23,48 +26,74 @@ header {
     padding: 12px 0;
 }
 
-.container-principal {  
-    width: 80%;
-    max-width: 1200px; /* Limita a largura em ecrãs grandes */
-    margin: 0 auto; /* Centra a barra de navegação */
+.container-principal {
+    width: 75%;
+    max-width: 1200px;
+    /* Limita a largura em ecrãs grandes */
+    margin: 0 auto;
+    /* Centra a barra de navegação */
 }
+
 /* BARRA DE NAVEGAÇÃO */
 
 .navbar {
-    display: flex; /* Alinha o logo e os links lado a lado */
-    justify-content: space-between; /* Espaço entre o logo e os links */
-    align-items: center; /* Centra verticalmente */
-    padding: 0.5rem 0; /* Espaçamento superior e inferior */
+    display: flex;
+    /* Alinha o logo e os links lado a lado */
+    justify-content: space-between;
+    /* Espaço entre o logo e os links */
+    align-items: center;
+    /* Centra verticalmente */
+    padding: 0.5rem 0;
+    /* Espaçamento superior e inferior */
 }
 
 .nav-links {
-    flex-grow: 1;   /* Faz os links ocuparem o espaço restante */
-    list-style: none;   /* Remove os marcadores da lista */
-    display: flex;  /* Alinha os links horizontalmente */
-    gap: 1rem;  /* Espaçamento entre os links */
-    text-align: center; /* Centraliza o texto dos links */
-    justify-content: center; /* Centraliza os links na barra de navegação */
-    padding: 0; /* Remove o padding padrão */
-    margin: 0; /* Remove a margem padrão */
+    flex-grow: 1;
+    /* Faz os links ocuparem o espaço restante */
+    list-style: none;
+    /* Remove os marcadores da lista */
+    display: flex;
+    /* Alinha os links horizontalmente */
+    gap: 1rem;
+    /* Espaçamento entre os links */
+    text-align: center;
+    /* Centraliza o texto dos links */
+    justify-content: center;
+    /* Centraliza os links na barra de navegação */
+    padding: 0;
+    /* Remove o padding padrão */
+    margin: 0;
+    /* Remove a margem padrão */
     font-weight: bold;
 }
 
 .nav-links a {
     color: var(--cor-secundaria);
-    text-decoration: none; /* Remove o sublinhado padrão */
-    border-bottom-width: 3px;   /* Espessura da linha */
-    border-bottom-style: solid; /* Tipo de linha */
-    border-bottom-color: transparent; /* Cor inicial (invisível) */
-    font-size: 0.9rem; /* Tamanho da fonte */
-    margin: 0 1.5rem; /* Espaçamento horizontal entre os links */
-    padding-bottom: 10px; /* Espaço entre o texto e a linha */
-    border-bottom: 3px solid transparent; /* Linha inferior inicial invisível */
-    transition: all 0.3s ease; /* Transição suave */
+    text-decoration: none;
+    /* Remove o sublinhado padrão */
+    border-bottom-width: 3px;
+    /* Espessura da linha */
+    border-bottom-style: solid;
+    /* Tipo de linha */
+    border-bottom-color: transparent;
+    /* Cor inicial (invisível) */
+    font-size: 0.9rem;
+    /* Tamanho da fonte */
+    margin: 0 1.5rem;
+    /* Espaçamento horizontal entre os links */
+    padding-bottom: 10px;
+    /* Espaço entre o texto e a linha */
+    border-bottom: 3px solid transparent;
+    /* Linha inferior inicial invisível */
+    transition: all 0.3s ease;
+    /* Transição suave */
 }
 
 .nav-links a.link-ativo {
-    color: var(--cor-principal); /* Ex: muda a cor do texto quando ativo */
-    border-bottom-color: var(--cor-principal); /* Cor da linha quando ativo */
+    color: var(--cor-principal);
+    /* Ex: muda a cor do texto quando ativo */
+    border-bottom-color: var(--cor-principal);
+    /* Cor da linha quando ativo */
     text-decoration: none;
 }
 
@@ -72,7 +101,8 @@ header {
     /* Não usar o sublinhado padrão no hover; usar apenas mudança de cor/linha inferior */
     text-decoration: none;
     text-underline-offset: inherit;
-    color: var(--cor-principal); /* Ex: fica azul ao passar o rato */
+    color: var(--cor-principal);
+    /* Ex: fica azul ao passar o rato */
 }
 
 .nav-links a,
@@ -91,18 +121,22 @@ header {
 }
 
 body {
-    padding-top: var(--header-height, 70px); /* Ajuste conforme a altura do header */
+    padding-top: var(--header-height, 70px);
+    /* Ajuste conforme a altura do header */
 }
 
 /* Hero Section */
 .hero-badge {
     /* fundo */
-    background-image: linear-gradient(to right, var(--cor-principal), #00d4ff); /* Gradiente azul */
-    border-radius: 999px; /* Bordas arredondadas */
-    display: inline-block; /* Ajusta o tamanho ao conteúdo */
+    background-image: linear-gradient(to right, var(--cor-principal), #00d4ff);
+    /* Gradiente azul */
+    border-radius: 999px;
+    /* Bordas arredondadas */
+    display: inline-block;
+    /* Ajusta o tamanho ao conteúdo */
     /* texto */
     color: white;
-    /* espaçamento */   
+    /* espaçamento */
     padding: 10px 20px;
 }
 
@@ -114,14 +148,18 @@ body {
     margin: 0 auto;
 }
 
-.container-de-seccoes .seccao:nth-child(odd){
-    background-color: #ffffff; /* Cor A (ex: branco) */
-    color: #333; /* Texto escuro para fundo claro */
-}   
+.container-de-seccoes .seccao:nth-child(odd) {
+    background-color: #ffffff;
+    /* Cor A (ex: branco) */
+    color: #333;
+    /* Texto escuro para fundo claro */
+}
 
-.container-de-seccoes .seccao:nth-child(even){
-    background-color: #f7f7f7; /* Cor B (ex: cinza claro) */
-    color: #333; /* Texto escuro */
+.container-de-seccoes .seccao:nth-child(even) {
+    background-color: #f7f7f7;
+    /* Cor B (ex: cinza claro) */
+    color: #333;
+    /* Texto escuro */
 }
 
 .title {
@@ -149,18 +187,22 @@ body {
 
 .botao {
     /* Layout e Espaçamento */
-    display: inline-block; /* Permite que o link tenha padding */
-    padding: 14px 28px; /* Espaçamento interno */
-    margin: 5px; /* Espaço entre os botões */
+    display: inline-block;
+    /* Permite que o link tenha padding */
+    padding: 14px 28px;
+    /* Espaçamento interno */
+    margin: 5px;
+    /* Espaço entre os botões */
 
-/* Texto */
+    /* Texto */
     font-size: 1rem;
     font-weight: bold;
     text-decoration: none;
     text-align: center;
-    
+
     /* Aparência */
-    border-radius: 12px; /* Deixa os cantos bem arredondados */
+    border-radius: 12px;
+    /* Deixa os cantos bem arredondados */
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -191,14 +233,17 @@ body {
      * Cria uma sombra suave.
      * (0px = horizontal, 5px = vertical, 15px = blur/desfoque)
     */
-    box-shadow: 0 5px 15px rgba(0, 86, 179, 0.4); /* Sombra azul */
+    box-shadow: 0 5px 15px rgba(0, 86, 179, 0.4);
+    /* Sombra azul */
 }
 
 /* --- C. O HOVER do Botão Secundário (Inversão) --- */
 .botao-secundario:hover {
     /* Simplesmente invertemos as cores do estado normal */
-    background-color: var(--cor-principal); /* Fundo fica azul */
-    color: #ffffff; /* Texto fica branco */
+    background-color: var(--cor-principal);
+    /* Fundo fica azul */
+    color: #ffffff;
+    /* Texto fica branco */
 }
 
 .container-stats {
@@ -235,7 +280,7 @@ body {
 
 .titulo-seccao {
     font-size: 3rem;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
     font-weight: bold;
     color: black;
     text-align: center;
@@ -244,9 +289,11 @@ body {
 
 .container-colunas-sobre {
     display: flex;
-    flex-direction: row; /* Lado a lado (padrão) */
-    justify-content: space-between; 
-    gap: 3rem; /* ex: 48px */
+    flex-direction: row;
+    /* Lado a lado (padrão) */
+    justify-content: space-between;
+    gap: 3rem;
+    /* ex: 48px */
 }
 
 .coluna-texto-sobre {
@@ -259,9 +306,12 @@ body {
 
 .coluna-texto-sobre p {
     font-size: 1.1rem;
-    color: #6b7280; /* Cinza escuro */
-    line-height: 1.7; /* Bom espaçamento entre linhas */
-    margin-bottom: 1.5rem; /* Espaço entre parágrafos */
+    color: #6b7280;
+    /* Cinza escuro */
+    line-height: 1.7;
+    /* Bom espaçamento entre linhas */
+    margin-bottom: 1.5rem;
+    /* Espaço entre parágrafos */
 }
 
 .coluna-skills-sobre h3 {
@@ -272,19 +322,23 @@ body {
 .container-habilidades-sobre {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.75rem; 
+    gap: 0.75rem;
 }
 
 .badge-habilidade {
-    background-color: #ffffff; /* Fundo cinza bem claro */
-    padding: 10px 15px; /* Espaçamento interno */
-    border-radius: 12px; /* Cantos arredondados */
+    background-color: #ffffff;
+    /* Fundo cinza bem claro */
+    padding: 10px 15px;
+    /* Espaçamento interno */
+    border-radius: 12px;
+    /* Cantos arredondados */
     font-size: .875rem;
     font-weight: 600;
     color: #333;
-    border: 1px solid #eee; /* Borda subtil */
+    border: 1px solid #eee;
+    /* Borda subtil */
     display: inline-block;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     transition: all 1s ease;
 }
 
@@ -296,11 +350,105 @@ body {
 
 }
 
+.container-titulo-subtitulo-projetos {
+    text-align: center;
+}
+
+.subtitulo-seccao-projetos {
+    font-size: 1.2rem;
+    color: #6b7280;
+    /* Cinza escuro */
+    line-height: 1.7;
+    /* Bom espaçamento entre linhas */
+    margin-bottom: 0.1rem;
+    /* Espaço entre parágrafos */
+    max-width: 65ch;
+    margin: 0 auto;
+}
+
+.container-cards-grid-projetos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 5rem;
+}
+
+.card-projetos {
+    background-color: #ffffff;
+    /* Fundo cinza bem claro */
+    padding: 2rem;
+    /* Espaçamento interno */
+    border-radius: 16px;
+    /* Cantos arredondados */
+    font-size: .875rem;
+    font-weight: 600;
+    color: #333;
+    border: 1px solid #e0e0e0;
+    /* Borda subtil */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.card-projetos:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 86, 179, 0.15);
+    border-color: var(--cor-principal);
+    color: var(--cor-principal);
+
+}
+
+.icon-card {
+    font-size: 2rem;
+    color: var(--cor-principal);
+}
+
+.title-card {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: black;
+    margin-top: 1rem;
+}
+
+.subtitle-card {
+    font-size: 1rem;
+    color: var(--cor-secundaria);
+    /* Cinza do seu :root */
+    margin-top: 0.5rem;
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+.techs-card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.badge-card {
+    background-color: #e2e2e2;
+    padding: 5px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    color: #4a4a4a;
+    font-weight: normal;
+}
+
+.link-card {
+    transform: translateX(3px);
+    transition: all 0.3s ease;
+}
+
 @media (max-width: 768px) {
     .sobre-container-colunas {
-        flex-direction: column; /* Mude o eixo para vertical */
+        flex-direction: column;
+        /* Mude o eixo para vertical */
     }
-    
+
     /* (Opcional) Faz as colunas ocuparem 100% da largura */
     .sobre-coluna-texto,
     .sobre-coluna-habilidades {
