@@ -1,16 +1,21 @@
-# 💼 Portfólio — Brian Pereira Ventura
+# 👋 Olá, eu sou Brian Ventura
 
 Bem-vindo(a) ao meu portfólio!  
-Este repositório foi criado para reunir e apresentar meus principais projetos, além de mostrar um pouco sobre quem eu sou como profissional.
+Aqui você encontrará alguns dos meus principais projetos e um pouco sobre minha jornada profissional.
 
 ---
 
-## 👤 Sobre Mim
+## 🌐 Acesse Meu Site
 
-Sou um(a) profissional apaixonado(a) por tecnologia, aprendizado constante e criação de soluções que geram impacto real.  
-Tenho experiência em desenvolvimento de softwares, automação e criação de interfaces modernas e funcionais.  
+Para conhecer mais sobre mim e explorar meus projetos, visite meu site:  
+👉 [**Clique aqui**](https://brianpventura.github.io/portfolio_brian/)
 
-Atualmente, dedico meu tempo a aprimorar minhas habilidades técnicas, explorar novas ferramentas e contribuir para projetos que unem **criatividade**, **tecnologia** e **eficiência**.
+---
+
+## 👨‍💻 Sobre Mim
+
+Sou um(a) profissional apaixonado(a) por tecnologia e inovação.  
+Tenho experiência em [sua área de atuação] e estou sempre em busca de novos desafios e aprendizados.
 
 ---
 
@@ -34,36 +39,11 @@ Atualmente, dedico meu tempo a aprimorar minhas habilidades técnicas, explorar 
 
 ---
 
-## 🛠️ Tecnologias & Ferramentas
-
-- **Linguagens:** HTML, CSS, JavaScript, Python  
-- **Ferramentas:** Git, Figma, VS Code, GitHub Pages  
-
-> 💡 Sempre em busca de aprimorar minhas habilidades e aprender novas tecnologias.
-
----
-
-## 🎯 Objetivo Profissional
-
-Meu foco é crescer como desenvolvedor full stack, colaborando em projetos desafiadores e criativos.  
-Acredito que cada linha de código é uma oportunidade de construir algo útil, bonito e eficiente.
-
----
 
 ## 📫 Contato
 
 - **E-mail:** brianpventura.pro@gmail.com
-- **LinkedIn:** [linkedin.com/in/brian-ventura](https://www.linkedin.com/in/brian-ventura-68081a25a/)  
-- **GitHub:** [@brianpventura](https://github.com/brianpventura)  
-- **Portfólio Online:** [seusite.com](https://seusite.com) 
+- [**LinkedIn**](https://www.linkedin.com/in/brian-ventura-68081a25a/)  
+- [**GitHub**](https://github.com/brianpventura)   
 
 ---
-
-## 🧠 Licença
-
-Este repositório é de uso pessoal e serve como vitrine de projetos e aprendizados.  
-Você pode se inspirar, mas dê os devidos créditos. 😉
-
----
-
-⭐ **Se gostou do portfólio, não esqueça de deixar uma estrela!**
