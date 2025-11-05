@@ -22,13 +22,13 @@ Atualmente, dedico meu tempo a aprimorar minhas habilidades técnicas, explorar 
 
 ---
 
-### ⚙️ Projetos Python
+### 🐍 Projetos Python
 **Descrição curta:** Um repositório recheado com vários exercícios para quem quer aprender Python, incluindo um projeto prático!  
 🔗 [Acessar Projeto](https://github.com/brianpventura/exercicios-python-iniciante)  
 
 ---
 
-### 🌎 Gestor de Tarefas
+### 🎲 Gestor de Tarefas
 **Descrição curta:** Desenvolvimento de um software gerenciador de tarefas, utilizando Python em conjunto com SQLite, abordando o conceito de ORM's.
 🔗 [Acessar Projeto](https://github.com/brianpventura/learning_database)
 
