@@ -55,7 +55,7 @@ Acredito que cada linha de código é uma oportunidade de construir algo útil, 
 - **E-mail:** brianpventura.pro@gmail.com
 - **LinkedIn:** [linkedin.com/in/brian-ventura](https://www.linkedin.com/in/brian-ventura-68081a25a/)  
 - **GitHub:** [@brianpventura](https://github.com/brianpventura)  
-- **Portfólio Online:** [seusite.com](https://seusite.com) 
+- **Portfólio Online:** https://brianpventura.github.io/portfolio_brian/([https://seusite.com](https://brianpventura.github.io/portfolio_brian/)) 
 
 ---
 
