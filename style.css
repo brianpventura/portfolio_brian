@@ -112,11 +112,14 @@ header {
 }
 
 .logo {
+    display: inline-flex;
+    align-items: center;
     font-size: 1.5rem;
     font-weight: bold;
     color: var(--cor-principal);
     text-decoration: none;
     color: var(--cor-principal);
+    gap: 5px;
 }
 
 body {
