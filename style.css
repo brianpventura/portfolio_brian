@@ -7,8 +7,14 @@
     --cor-secundaria: #6b7280;
 }
 
+svg {
+    display: inline-block;
+    vertical-align: middle;
+}
+
 * {
     font-family: var(--fonte-principal);
+    box-sizing: border-box;
 }
 
 html {
@@ -103,13 +109,6 @@ header {
     text-underline-offset: inherit;
     color: var(--cor-principal);
     /* Ex: fica azul ao passar o rato */
-}
-
-.nav-links a,
-.nav-links a:visited,
-.nav-links a:hover,
-.nav-links a:focus {
-    text-decoration: none;
 }
 
 .logo {
@@ -253,7 +252,7 @@ body {
     flex-wrap: wrap;
     width: 100%;
     padding: 40px 0;
-    gap: 15rem;
+    gap: 4rem;
 }
 
 .stat-item {
@@ -279,9 +278,9 @@ body {
 }
 
 .titulo-seccao {
-    font-size: 3rem;
-    margin-bottom: 3rem;
-    font-weight: bold;
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 1.5rem;
+    font-weight: 800;
     color: black;
     text-align: center;
 }
@@ -350,17 +349,17 @@ body {
 
 }
 
-.container-titulo-subtitulo-projetos {
+.container-titulo-subtitulo {
     text-align: center;
+    margin-bottom: 2rem;
 }
 
-.subtitulo-seccao-projetos {
-    font-size: 1.2rem;
+.subtitulo {
+    font-size: 1.1rem;
     color: #6b7280;
     /* Cinza escuro */
     line-height: 1.7;
     /* Bom espaçamento entre linhas */
-    margin-bottom: 0.1rem;
     /* Espaço entre parágrafos */
     max-width: 65ch;
     margin: 0 auto;
@@ -370,7 +369,7 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    margin-bottom: 5rem;
+    margin-top: 3rem;
 }
 
 .card-projetos {
@@ -433,25 +432,89 @@ body {
     background-color: #e2e2e2;
     padding: 5px 12px;
     border-radius: 12px;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     color: #4a4a4a;
     font-weight: normal;
 }
 
-.link-card {
-    transform: translateX(3px);
-    transition: all 0.3s ease;
+.link-card a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--cor-principal);
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1rem;
 }
 
+.link-card a svg {
+    transition: transform 0.3s ease;
+}
+
+.link-card a:hover svg {
+    transform: translateX(4px);
+}
+
+.contact-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+}
+
+.contact-link {
+    background-color: #ffffff;
+    /* Fundo cinza bem claro */
+    padding: 1.5rem 2rem;
+    /* Espaçamento interno */
+    border-radius: 16px;
+    /* Cantos arredondados */
+    font-size: .875rem;
+    font-weight: 600;
+    color: #333;
+    border: 1px solid #e0e0e0;
+    /* Borda subtil */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 100%;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    align-items: center;
+    gap: 1rem;
+}
+
+.contact-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 86, 179, 0.15);
+    border-color: var(--cor-principal);
+    color: var(--cor-principal);
+}
+
+.contact-link a,
+.contact-link a:visited,
+.contact-link a:hover,
+.contact-link a:focus {
+    text-decoration: none;
+}
+
+footer {
+    background-color: #fff;
+    border-top: 1px solid #e5e7eb;
+    padding: 3rem 2rem;
+    text-align: center;
+    color: var(--cor-secundaria);
+}
+
+
 @media (max-width: 768px) {
-    .sobre-container-colunas {
-        flex-direction: column;
-        /* Mude o eixo para vertical */
+    .container-colunas-sobre {
+        flex-direction: column; /* Mude o eixo para vertical */
     }
 
-    /* (Opcional) Faz as colunas ocuparem 100% da largura */
-    .sobre-coluna-texto,
-    .sobre-coluna-habilidades {
-        flex-basis: 100%;
+    .coluna-texto-sobre,
+    .coluna-skills-sobre {
+        flex-basis: 100%; /* Faz as colunas ocuparem 100% */
     }
 }
