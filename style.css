@@ -511,13 +511,159 @@ footer {
 }
 
 
+.hamburger-menu {
+    display: none; /* 1. Escondido por defeito (em desktop) */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1010; /* Garante que fica acima do menu overlay */
+
+    /* Dimensões do ícone */
+    width: 28px;
+    height: 22px;
+    
+    /* Flexbox para organizar as 3 linhas */
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hamburger-menu .linha {
+    display: block;
+    width: 100%;
+    height: 3px; /* Espessura da linha */
+    background-color: #333; /* Cor da linha (preto/cinza escuro) */
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+}
+
+
+/* ============================================== */
+/* --- 6. RESPONSIVIDADE (O Ponto de Viragem) --- */
+/* ============================================== */
+
+/* Quando a tela for 768px ou menor... */
 @media (max-width: 768px) {
-    .container-colunas-sobre {
-        flex-direction: column; /* Mude o eixo para vertical */
+
+    /* --- 6.1. Ajustes Gerais --- */
+    
+    /* Reduz o padding das secções */
+    .seccao {
+        padding: 40px 10px;
+    }
+    
+    /* Reduz a "margem padrão" em telemóveis */
+    .container-principal {
+        width: 90%;
     }
 
+
+    /* --- 6.2. Cabeçalho e Navbar --- */
+    
+    /* Mostra o ícone hambúrguer */
+    .hamburger-menu {
+        display: flex;
+    }
+
+    /* Esconde o menu de links do desktop */
+    .navbar .nav-links {
+        display: none;
+    }
+    
+    /* Faz o logo "empurrar" o ícone para a direita */
+    .navbar .logo {
+        flex-grow: 1; 
+    }
+    
+    
+    /* --- 6.3. O Menu Mobile (Overlay) --- */
+    
+    .nav-links {
+        /* Layout de Ecrã Inteiro */
+        position: fixed; 
+        top: 0;
+        left: 0;
+        width: 100vw; /* 100% da largura da tela */
+        height: 100vh; /* 100% da altura da tela */
+        
+        /* Cor e Alinhamento */
+        background-color: var(--cor-fundo); /* Fundo branco */
+        display: flex;
+        flex-direction: column; /* Links empilhados */
+        justify-content: center;
+        align-items: center;
+        
+        /* Animação: Esconde o menu fora do ecrã */
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+        
+        margin: 0;
+        z-index: 1000; /* Fica por cima de tudo */
+    }
+
+    /* ESTADO ATIVO (Classe que o JS vai adicionar) */
+    .nav-links.nav-ativo {
+        transform: translateX(0); /* Desliza para dentro */
+        display: flex; /* Garante que está visível */
+    }
+    
+    /* Estilo dos links no menu mobile */
+    .nav-links li {
+        margin: 1.5rem 0;
+    }
+    .nav-links a {
+        font-size: 1.5rem; /* Letra maior */
+        color: #333;
+    }
+    .nav-links a.link-ativo {
+        border-bottom-color: var(--cor-principal);
+    }
+    
+    
+    /* --- 6.4. Animação do 'X' --- */
+    
+    /* Gira a primeira linha */
+    .hamburger-menu.ativo .linha:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+    }
+    /* Esconde a linha do meio */
+    .hamburger-menu.ativo .linha:nth-child(2) {
+        opacity: 0;
+    }
+    /* Gira a terceira linha */
+    .hamburger-menu.ativo .linha:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    /* --- 6.5. Ajustes de Layout das Secções --- */
+
+    /* Hero: Reduzir a fonte do título */
+    .title {
+        font-size: 2.5rem; /* Antes era 4rem */
+    }
+    .desc-hero {
+        font-size: 1.1rem; /* Antes era 1.3rem */
+        max-width: 100%; /* Deixa o texto ocupar a largura */
+    }
+    
+    /* Stats: Centralizar quando quebrar a linha */
+    .container-stats {
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .container-colunas-sobre {
+        flex-direction: column;
+    }
     .coluna-texto-sobre,
     .coluna-skills-sobre {
-        flex-basis: 100%; /* Faz as colunas ocuparem 100% */
+        flex-basis: 100%;
+    }
+
+    /* Contato (Corrigir o grid de 3 colunas) */
+    .contact-links {
+        /* Muda de 3 colunas para 1 coluna */
+        grid-template-columns: 1fr;
+        gap: 1rem;
     }
 }
