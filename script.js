@@ -1,95 +1,126 @@
-// Inicia UM ÚNICO "ouvinte" que espera o HTML carregar
-document.addEventListener('DOMContentLoaded', function () {
-
-    // --- 1. DEFINIÇÕES PRINCIPAIS ---
-    const navbarlinks = document.querySelectorAll('.nav-links a');
-    const sections = document.querySelectorAll('main .seccao[id]');
+// Refatorado: modular, com debounce/throttle para melhor performance
+document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('header');
-    
-    // --- NOVO: Selecionar os elementos do Menu Mobile ---
+    const navMenu = document.querySelector('.nav-links');
     const hamburgerBtn = document.querySelector('.hamburger-menu');
-    const navMenu = document.querySelector('.nav-links'); // O seu <ul>
-    
-    if (!header || !hamburgerBtn || !navMenu) {
-        console.error("Erro: Elementos essenciais do header não encontrados.");
-        return;
-    }
+    const navLinks = navMenu ? Array.from(navMenu.querySelectorAll('a')) : Array.from(document.querySelectorAll('.nav-links a'));
+    const sections = Array.from(document.querySelectorAll('main .seccao[id]'));
 
-    // --- 2. LÓGICA DO MENU MOBILE ---
-    // Adiciona o "ouvinte" de clique ao hambúrguer
-    hamburgerBtn.addEventListener('click', function() {
-        // Alterna (liga/desliga) a classe 'nav-ativo' no <ul>
-        navMenu.classList.toggle('nav-ativo');
-        
-        // Alterna a classe 'ativo' no botão para a animação do 'X'
-        hamburgerBtn.classList.toggle('ativo');
-        
-        // Atualiza o aria-expanded para acessibilidade
-        const isExpanded = navMenu.classList.contains('nav-ativo');
-        hamburgerBtn.setAttribute('aria-expanded', isExpanded);
-    });
+    if (!header) return; // nada a fazer sem header
 
-    // --- 3. LÓGICA DE CLIQUE ---
-    // (Modificada para fechar o menu mobile ao clicar num link)
-    navbarlinks.forEach(function (link) {
-        link.addEventListener('click', function (e) {
-            
-            // Remove 'link-ativo' de todos
-            navbarlinks.forEach(function (LinkInterno) {
-                LinkInterno.classList.remove('link-ativo');
-            });
-            // Adiciona 'link-ativo' ao clicado
-            this.classList.add('link-ativo');
-            
-            // --- ATUALIZAÇÃO IMPORTANTE ---
-            // Se o menu mobile (navMenu) estiver aberto, feche-o
-            if (navMenu.classList.contains('nav-ativo')) {
-                navMenu.classList.remove('nav-ativo');
-                hamburgerBtn.classList.remove('ativo');
-                hamburgerBtn.setAttribute('aria-expanded', 'false');
-            }
-            // --- FIM DA ATUALIZAÇÃO ---
-        });
-    });
+    // Utilitários
+    const debounce = (fn, wait = 100) => {
+        let t;
+        return (...args) => {
+            clearTimeout(t);
+            t = setTimeout(() => fn.apply(null, args), wait);
+        };
+    };
 
-    // --- 4. LÓGICA DA ALTURA DO HEADER ---
+    // throttle removed (we'll use IntersectionObserver for scrollspy)
+
+    // Atualiza a variável CSS com a altura atual do header
     function updateHeaderHeightVar() {
         const height = header.offsetHeight;
         document.documentElement.style.setProperty('--header-height', height + 'px');
     }
+    // On resize, update CSS var and recreate the observer (so rootMargin accounts for new header height)
+    const debouncedUpdateHeader = debounce(() => {
+        updateHeaderHeightVar();
+        recreateObserver();
+        updateActiveFromViewport();
+    }, 120);
     updateHeaderHeightVar();
-    window.addEventListener('resize', updateHeaderHeightVar);
+    window.addEventListener('resize', debouncedUpdateHeader);
 
-    // --- 5. LÓGICA DE SCROLLSPY ---
-    function updateActiveLinkOnScroll() {
-        const headerHeight = header.offsetHeight;
-        let scrollY = window.pageYOffset + headerHeight + 50;
-        let activeSectionId = null;
-
-        sections.forEach(current => {
-            const sectionHeight = current.offsetHeight;
-            const sectionTop = current.offsetTop;
-
-            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                activeSectionId = current.getAttribute('id');
+    // Menu mobile: alterna e fecha
+    function closeMenu() {
+        if (navMenu && navMenu.classList.contains('nav-ativo')) {
+            navMenu.classList.remove('nav-ativo');
+            if (hamburgerBtn) {
+                hamburgerBtn.classList.remove('ativo');
+                hamburgerBtn.setAttribute('aria-expanded', 'false');
             }
-        });
-        
-        if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 2) {
-            activeSectionId = sections[sections.length - 1].getAttribute('id');
         }
+    }
 
-        navbarlinks.forEach(link => {
-            const linkHref = link.getAttribute('href');
-            
-            if (activeSectionId && linkHref.includes(activeSectionId)) {
-                link.classList.add('link-ativo');
-            } else {
-                link.classList.remove('link-ativo');
-            }
+    if (hamburgerBtn && navMenu) {
+        hamburgerBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('nav-ativo');
+            hamburgerBtn.classList.toggle('ativo');
+            const isExpanded = navMenu.classList.contains('nav-ativo');
+            hamburgerBtn.setAttribute('aria-expanded', String(isExpanded));
         });
     }
 
-    window.addEventListener('scroll', updateActiveLinkOnScroll);
+    // Clique nos links: ativa classe e fecha o menu mobile (se aberto)
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.forEach(l => l.classList.remove('link-ativo'));
+            link.classList.add('link-ativo');
+            closeMenu();
+        });
+    });
 
+    // Scrollspy usando IntersectionObserver (mais eficiente)
+    let observer = null;
+
+    function setActiveLinkById(id) {
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href') || '';
+            if (id && href.includes('#' + id)) link.classList.add('link-ativo');
+            else link.classList.remove('link-ativo');
+        });
+    }
+
+    function updateActiveFromViewport() {
+        // Fallback calculation (sync) — usa mesma lógica do scrollspy para estado inicial
+        const headerHeight = header.offsetHeight;
+        const scrollY = window.pageYOffset + headerHeight + 50;
+        let activeSectionId = null;
+
+        sections.forEach(sec => {
+            const top = sec.offsetTop;
+            const h = sec.offsetHeight;
+            if (scrollY > top && scrollY <= top + h) activeSectionId = sec.id;
+        });
+
+        if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 2) {
+            activeSectionId = sections[sections.length - 1]?.id || activeSectionId;
+        }
+
+        setActiveLinkById(activeSectionId);
+    }
+
+    function handleIntersections(entries) {
+        // Escolhe a entry mais visível
+        const visible = entries.filter(e => e.isIntersecting);
+        if (visible.length === 0) return;
+        let best = visible[0];
+        visible.forEach(e => {
+            if (e.intersectionRatio > best.intersectionRatio) best = e;
+        });
+        const id = best.target.id;
+        setActiveLinkById(id);
+    }
+
+    function recreateObserver() {
+        if (observer) observer.disconnect();
+        const headerHeight = header.offsetHeight;
+        // rootMargin moves the threshold down by header height so the section enters
+        // the viewport considering the fixed header; bottom margin is negative to
+        // trigger earlier when section occupies central area.
+        const rootMargin = `-${headerHeight}px 0px -40% 0px`;
+        observer = new IntersectionObserver(handleIntersections, {
+            root: null,
+            rootMargin: rootMargin,
+            threshold: [0.25, 0.5, 0.75]
+        });
+        sections.forEach(s => observer.observe(s));
+    }
+
+    // Inicializa
+    recreateObserver();
+    // Estado inicial
+    updateActiveFromViewport();
 });

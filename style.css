@@ -33,7 +33,7 @@ header {
 }
 
 .container-principal {
-    width: 75%;
+    width: min(1200px, 90%);
     max-width: 1200px;
     /* Limita a largura em ecrãs grandes */
     margin: 0 auto;
@@ -118,7 +118,6 @@ header {
     font-weight: bold;
     color: var(--cor-principal);
     text-decoration: none;
-    color: var(--cor-principal);
     gap: 5px;
 }
 
@@ -144,8 +143,8 @@ body {
 
 .icones-sobre-mim {
     fill: var(--cor-principal);
-    height: 75px;
-    width: 75px;
+    width: clamp(48px, 6vw, 75px);
+    height: auto;
 }
 
 
@@ -270,8 +269,7 @@ body {
 }
 
 .stat-number {
-    -webkit-text-fill-color: #0000;
-    background: linear-gradient(135deg, var(--cor-principal), #00d9ff);
+    -webkit-text-fill-color: transparent;
     background: linear-gradient(135deg, var(--cor-principal), #00d9ff);
     -webkit-background-clip: text;
     background-clip: text;
@@ -521,17 +519,19 @@ footer {
 
 
 .hamburger-menu {
-    display: none; /* 1. Escondido por defeito (em desktop) */
+    display: none;
+    /* 1. Escondido por defeito (em desktop) */
     background: none;
     border: none;
     cursor: pointer;
     padding: 0;
-    z-index: 1010; /* Garante que fica acima do menu overlay */
+    z-index: 1010;
+    /* Garante que fica acima do menu overlay */
 
     /* Dimensões do ícone */
     width: 28px;
     height: 22px;
-    
+
     /* Flexbox para organizar as 3 linhas */
     flex-direction: column;
     justify-content: space-between;
@@ -540,8 +540,10 @@ footer {
 .hamburger-menu .linha {
     display: block;
     width: 100%;
-    height: 3px; /* Espessura da linha */
-    background-color: #333; /* Cor da linha (preto/cinza escuro) */
+    height: 3px;
+    /* Espessura da linha */
+    background-color: #333;
+    /* Cor da linha (preto/cinza escuro) */
     border-radius: 2px;
     transition: all 0.3s ease-in-out;
 }
@@ -555,12 +557,12 @@ footer {
 @media (max-width: 768px) {
 
     /* --- 6.1. Ajustes Gerais --- */
-    
+
     /* Reduz o padding das secções */
     .seccao {
         padding: 40px 10px;
     }
-    
+
     /* Reduz a "margem padrão" em telemóveis */
     .container-principal {
         width: 90%;
@@ -568,7 +570,7 @@ footer {
 
 
     /* --- 6.2. Cabeçalho e Navbar --- */
-    
+
     /* Mostra o ícone hambúrguer */
     .hamburger-menu {
         display: flex;
@@ -578,67 +580,81 @@ footer {
     .navbar .nav-links {
         display: none;
     }
-    
+
     /* Faz o logo "empurrar" o ícone para a direita */
     .navbar .logo {
-        flex-grow: 1; 
+        flex-grow: 1;
     }
-    
-    
+
+
     /* --- 6.3. O Menu Mobile (Overlay) --- */
-    
+
     .nav-links {
         /* Layout de Ecrã Inteiro */
-        position: fixed; 
+        position: fixed;
         top: 0;
         left: 0;
-        width: 100vw; /* 100% da largura da tela */
-        height: 100vh; /* 100% da altura da tela */
-        
+        width: 100vw;
+        /* 100% da largura da tela */
+        height: 100vh;
+        /* 100% da altura da tela */
+
         /* Cor e Alinhamento */
-        background-color: var(--cor-fundo); /* Fundo branco */
+        background-color: var(--cor-fundo);
+        /* Fundo branco */
         display: flex;
-        flex-direction: column; /* Links empilhados */
+        flex-direction: column;
+        /* Links empilhados */
         justify-content: center;
         align-items: center;
-        
+
         /* Animação: Esconde o menu fora do ecrã */
         transform: translateX(100%);
         transition: transform 0.3s ease-in-out;
-        
+
         margin: 0;
-        z-index: 1000; /* Fica por cima de tudo */
+        z-index: 1000;
+        /* Fica por cima de tudo */
     }
 
     /* ESTADO ATIVO (Classe que o JS vai adicionar) */
     .nav-links.nav-ativo {
-        transform: translateX(0); /* Desliza para dentro */
-        display: flex; /* Garante que está visível */
+        transform: translateX(0);
+        /* Desliza para dentro */
+        display: flex;
+        /* Garante que está visível */
     }
-    
+
     /* Estilo dos links no menu mobile */
     .nav-links li {
         margin: 1.5rem 0;
     }
+
     .nav-links a {
-        font-size: 1.5rem; /* Letra maior */
+        font-size: 1.5rem;
+        /* Letra maior */
+        padding: 14px 0;
+        /* Melhor alvo tátil */
         color: #333;
     }
+
     .nav-links a.link-ativo {
         border-bottom-color: var(--cor-principal);
     }
-    
-    
+
+
     /* --- 6.4. Animação do 'X' --- */
-    
+
     /* Gira a primeira linha */
     .hamburger-menu.ativo .linha:nth-child(1) {
         transform: rotate(45deg) translate(6px, 6px);
     }
+
     /* Esconde a linha do meio */
     .hamburger-menu.ativo .linha:nth-child(2) {
         opacity: 0;
     }
+
     /* Gira a terceira linha */
     .hamburger-menu.ativo .linha:nth-child(3) {
         transform: rotate(-45deg) translate(6px, -6px);
@@ -648,13 +664,17 @@ footer {
 
     /* Hero: Reduzir a fonte do título */
     .title {
-        font-size: 2.5rem; /* Antes era 4rem */
+        font-size: 2.5rem;
+        /* Antes era 4rem */
     }
+
     .desc-hero {
-        font-size: 1.1rem; /* Antes era 1.3rem */
-        max-width: 100%; /* Deixa o texto ocupar a largura */
+        font-size: 1.1rem;
+        /* Antes era 1.3rem */
+        max-width: 100%;
+        /* Deixa o texto ocupar a largura */
     }
-    
+
     /* Stats: Centralizar quando quebrar a linha */
     .container-stats {
         justify-content: center;
@@ -664,6 +684,7 @@ footer {
     .container-colunas-sobre {
         flex-direction: column;
     }
+
     .coluna-texto-sobre,
     .coluna-skills-sobre {
         flex-basis: 100%;
@@ -674,5 +695,52 @@ footer {
         /* Muda de 3 colunas para 1 coluna */
         grid-template-columns: 1fr;
         gap: 1rem;
+    }
+}
+
+/* Breakpoint adicional para tablets/laptops (entre 769px e 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container-principal {
+        width: min(1100px, 92%);
+    }
+
+    .nav-links {
+        gap: 0.8rem;
+    }
+
+    .nav-links a {
+        font-size: 0.95rem;
+        margin: 0 1rem;
+    }
+
+    .title {
+        font-size: 3.2rem;
+    }
+}
+
+/* Pequenos ajustes em ecrãs muito pequenos */
+@media (max-width: 420px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .container-stats {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .botao {
+        padding: 12px 20px;
+    }
+
+
+    /* Garantir que o menu mobile overlay fica acima do header */
+    .nav-links {
+        z-index: 2000;
+    }
+
+    /* Pequeno ajuste visual no botão de hambúrguer para centralizar as linhas */
+    .hamburger-menu {
+        align-items: center;
     }
 }
