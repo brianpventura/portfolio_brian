@@ -142,6 +142,13 @@ body {
     padding: 10px 20px;
 }
 
+.icones-sobre-mim {
+    fill: var(--cor-principal);
+    height: 75px;
+    width: 75px;
+}
+
+
 /* ESTILIZAÇÃO DAS SEÇÕES */
 
 .seccao {
@@ -272,12 +279,14 @@ body {
     font-weight: 800;
     line-height: 1.2;
     margin-bottom: 8px;
+    align-items: center;
 }
 
 .stat-label {
     color: var(--cor-secundaria);
     font-size: .875rem;
     margin-top: .5rem;
+    max-width: 15ch;
 }
 
 .titulo-seccao {
