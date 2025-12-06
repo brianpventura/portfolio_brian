@@ -8,7 +8,7 @@ Aqui você encontrará alguns dos meus principais projetos e um pouco sobre minh
 ## 🌐 Acesse Meu Site
 
 Para conhecer mais sobre mim e explorar meus projetos, visite meu site:  
-👉 [**Clique aqui**](https://brianpventura.github.io/portfolio_brian/)
+👉 [**Clique aqui**](https://brianpventura.github.io/)
 
 ---
 
