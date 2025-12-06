@@ -126,6 +126,31 @@ body {
     /* Ajuste conforme a altura do header */
 }
 
+#home {
+    /* 1. Altura Mínima Inteligente:
+     * '100vh' = 100% da altura da janela.
+     * '- var(--header-height, 70px)' = Desconta a altura do menu.
+     * Isto garante que o conteúdo cabe exatamente no espaço visível,
+     * sem criar uma barra de rolagem desnecessária.
+    */
+    min-height: calc(100vh - var(--header-height, 70px));
+
+    /* 2. Centralização Vertical:
+     * Como a secção agora é alta, queremos o conteúdo bem no meio.
+    */
+    display: flex;
+    flex-direction: column;
+    /* Mantém os itens um debaixo do outro */
+    justify-content: center;
+    /* Centraliza verticalmente */
+
+    /* Garante que o container interno ocupe a largura toda */
+    width: 100%;
+
+    text-align: center;
+    align-items: center;
+}
+
 /* Hero Section */
 .hero-badge {
     /* fundo */
@@ -139,12 +164,25 @@ body {
     color: white;
     /* espaçamento */
     padding: 10px 20px;
+    margin-bottom: 1.5rem;
 }
 
 .icones-sobre-mim {
     fill: var(--cor-principal);
-    width: clamp(48px, 6vw, 75px);
+    /* Garante que usa a cor azul do tema */
+
+    /* Aumentei o mínimo de 48px para 60px para melhor visibilidade */
+    width: clamp(60px, 8vw, 60px);
     height: auto;
+
+    /* Adiciona uma transição suave se quiser animar no hover */
+    transition: transform 0.3s ease;
+}
+
+/* (Opcional) Efeito de hover no ícone */
+.stat-item:hover .icones-sobre-mim {
+    transform: scale(1.1);
+    /* Aumenta ligeiramente ao passar o rato */
 }
 
 
@@ -172,9 +210,10 @@ body {
 
 .title {
     font-size: 4rem;
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
     font-weight: bold;
     color: black;
+    line-height: 1.1;
 }
 
 .nome-gradiente {
@@ -188,9 +227,12 @@ body {
 .desc-hero {
     font-size: 1.3rem;
     color: #727272;
-    margin-top: 24px;
+    margin-top: 1rem;
     max-width: 80ch;
     line-height: 1.6;
+    margin-bottom: 2.5rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .botao {
@@ -256,7 +298,7 @@ body {
 
 .container-stats {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     width: 100%;
@@ -264,27 +306,49 @@ body {
     gap: 4rem;
 }
 
+.container-botoes {
+    display: flex;
+    justify-content: center; /* Centra os botões */
+    gap: 1rem; /* Espaço entre os botões (substitui a margin: 5px do .botao) */
+    
+    /* MUITO IMPORTANTE: Empurra a secção de stats (ícones) para longe */
+    margin-bottom: 4rem; 
+    flex-wrap: wrap; /* Para não quebrar em telemóveis muito pequenos */
+}
+
 .stat-item {
     text-align: center;
+
+    /* Garante alinhamento vertical perfeito */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /* Limita a largura para o texto quebrar de forma bonita (como na imagem) */
+    max-width: 150px;
 }
 
 .stat-number {
-    -webkit-text-fill-color: transparent;
-    background: linear-gradient(135deg, var(--cor-principal), #00d9ff);
-    -webkit-background-clip: text;
-    background-clip: text;
-    font-size: 2.5rem;
-    font-weight: 800;
-    line-height: 1.2;
-    margin-bottom: 8px;
+    /* Removemos o background-clip de texto, pois agora é um SVG */
+    background: none;
+    -webkit-text-fill-color: initial;
+
+    margin-bottom: 12px;
+    /* Mais espaço entre o ícone e o texto */
+
+    /* Centraliza o SVG se ele for menor que o container */
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
 
 .stat-label {
     color: var(--cor-secundaria);
-    font-size: .875rem;
-    margin-top: .5rem;
-    max-width: 15ch;
+    font-size: 0.95rem;
+    /* Um pouco maior para leitura */
+    line-height: 1.4;
+    /* Melhor espaçamento entre linhas do texto */
+    font-weight: 500;
 }
 
 .titulo-seccao {
